@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --main-gradient-color: linear-gradient(90deg, #104B99 0%, #2F80ED 86.79%, #2D9EE0 173.57%);
+}
+
+html{
+  min-width: 920px;
+  font-size: 16px;
+  min-height: 730px;
+  height: 100vh;
+  -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+
+@font-face {
+  font-family: FuturaDemiC;
+  src: url(./fonts/futurademic.ttf);
+}
+
+@font-face {
+  font-family: FuturaBookC;
+  src: url(./fonts/futurabookc.ttf);
+}
+
+@font-face {
+  font-family: FuturaMediumC;
+  src: url(./fonts/futuramediumc.ttf);
+}

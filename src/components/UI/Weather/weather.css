@@ -1,0 +1,20 @@
+.weather{
+    font-size: 350%;
+    float: right;
+    margin: 0 0 0 auto;
+}
+.weather > div{
+    display: flex;
+    align-items: center;
+    padding: 5px 24px 5px 24px;
+}
+
+.weatherParent{
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+}
+
+.weather img{
+    width: 27%;
+}

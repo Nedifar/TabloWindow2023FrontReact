@@ -1,0 +1,69 @@
+.pauseStripe{
+    width: 1px;
+    width: 2px;
+    height: 50%;
+    background-color: white;
+}
+
+.otherStripe{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-right: 25%;
+    margin-left: 25%;
+    height: 25%;
+    border-right: white solid 1px;
+    border-left: white solid 1px;
+}
+.otherStripe >div{
+    height: 200%;
+    position: absolute;
+    margin-top: -4%;
+}
+
+.stripeContainer{
+    position: relative;
+    border-right: white solid 2px;
+    border-left: white solid 2px;
+    text-align: -webkit-center;
+}
+
+.allLine{
+    background: #C5C5C5;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border-radius: 17px;
+    border: white solid 2px;
+}
+
+.ulLineDivLine {
+    height: 100%;
+    border-radius: 17px;
+    right: 0;
+    background: var(--main-gradient-color);
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 95%;
+    height: 90%;
+}
+
+.tableDayProgressParent{
+    height: 21vh;
+    min-height: 155px;
+}
+
+tr{
+    height: 25%;
+}
+
+.smallTr{
+    height: 10%;
+}
+
+td{
+    text-align-last: center;
+}
