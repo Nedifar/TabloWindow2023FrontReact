@@ -5,11 +5,10 @@ import Weather from '../UI/Weather/weather';
 import DateToDay from '../UI/DateToDay/DateToDay';
 import ContainerElementsWithShadow from '../UI/ContainerElementsWithShadow/containerElementsWithShadow';
 import logo from '../../images/OKEI 1.png'
-import getGreeting, { getBackgroundImage, getCabinet, getParasTableDate, getTeacher, getUpdate } from '../../lib/requestsApi';
+import getGreeting, { getBackgroundImage, getParasTableDate, getUpdate } from '../../lib/requestsApi';
 import StatusPara from '../UI/StatusPara/statusPara';
 import { useLocation } from 'react-router-dom';
 import '../../styles/bootstrap.min.css';
-import BackgroundVideo from '../../images/mutedBackground.mp4'
 
 const address = (process.env.REACT_APP_API_LOCAL || (window.location.origin + '/infotabloserver'))
 
@@ -21,19 +20,12 @@ export default function InfoFloor() {
     });
     const [dayWeeks, setDayWeeks] = useState([]);
     const location = useLocation();
-    const [teacher, setTeachers] = useState("");
     const [cabinet, setCabinets] = useState(<div></div>);
     const [backgroundMedia, setbackgroundMedia] = useState("");
 
     useEffect(() => {
         getBackgroundImage(setbackgroundMedia);
     }, [])
-
-    // useEffect(()=>{
-    //     document.querySelectorAll('.cabinetRowColumn').forEach(item=>{
-    //         item.addEventListener('click', popoverOpenClick('cabinet', item.innerHTML, setCabinets));
-    //     })
-    // }, dayWeeks);
 
     useEffect(() => {
 
@@ -79,7 +71,7 @@ export default function InfoFloor() {
                         console.log(count);
                     })
                     connection.on("SendBackImage", (src) => {
-                        setbackgroundMedia(src);
+                        setbackgroundMedia(address+'/'+src);
                     })
                 })
                 .catch(e => console.log('Coonection failed:', e));
@@ -89,7 +81,6 @@ export default function InfoFloor() {
     return (
         <div className='infoFloor'>
             <video className='backgroundVideo' src={backgroundMedia} poster={backgroundMedia} autoPlay loop muted />
-            {/* <Background /> */}
             <div className='upGridContainer'>
                 <div>
                     <img src={logo} className='logo' />

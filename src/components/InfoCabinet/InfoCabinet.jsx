@@ -1,27 +1,30 @@
-import './tablomain.css'
+import './infocabinet.css'
 import logo from '../../images/OKEI 1.png'
-import React, { useEffect, useLayoutEffect, useState } from 'react'
-import { HttpTransportType, HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
-import DateToDay from '../UI/DateToDay/DateToDay';
 import ContainerElementsWithShadow from '../UI/ContainerElementsWithShadow/containerElementsWithShadow';
-import getGreeting, { getBackgroundImage, getUpdate } from '../../lib/requestsApi';
-import Weather from '../UI/Weather/weather';
-import WeekNaming from '../UI/WeekNaming/weekNaming';
-import DutyAdministrator from '../UI/DutyAdministrator/dutyAdministrator';
-import Announcments from '../UI/Announcments/announcments';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import getGreeting, { getBackgroundImage, getParasCabinetForm, getUpdate } from '../../lib/requestsApi';
+import { HttpTransportType, HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
+import { useLayoutEffect } from 'react';
+import DateToDay from '../UI/DateToDay/DateToDay';
 import StatusPara from '../UI/StatusPara/statusPara';
-import ParaProgress from '../UI/ParaProgress/paraProgress';
-import ProgressOfDay from '../UI/ProgressOfDay/progressOfDay';
+import Weather from '../UI/Weather/weather';
+import { useLocation } from 'react-router-dom';
+import { Fragment } from 'react';
 
 const address = (process.env.REACT_APP_API_LOCAL || (window.location.origin + '/infotabloserver'))
 
-function TabloMain() {
+export default function InfoCabinet(props) {
     const [connection, setConnection] = useState(null);
     const [greeting, setGreeting] = useState("");
     const [update, setUpdate] = useState({
         timeNow: ""
     });
+    const location = useLocation();
+    const [dayWeeks, setDayWeeks] = useState([]);
+    const [lessonsInDay, setLessonsInDay] = useState(<div></div>);
     const [backgroundMedia, setbackgroundMedia] = useState("");
+    const [status, setStatus] = useState('');
 
     useEffect(() => {
         getBackgroundImage(setbackgroundMedia);
@@ -48,7 +51,12 @@ function TabloMain() {
         getUpdate(setUpdate);
     }, [])
 
+    useLayoutEffect(() => {
+        getParasCabinetForm(location, update, dayWeeks, setDayWeeks, setStatus);
+    }, [])
+
     useEffect(() => {
+        let count = 9;
         if (connection) {
             connection.start()
                 .then(result => {
@@ -57,7 +65,13 @@ function TabloMain() {
                         setGreeting(message);
                     })
                     connection.on("SendRequest", (update) => {
+                        count += 1;
+                        if (count == 10) {
+                            getParasCabinetForm(location, update, dayWeeks, setLessonsInDay, setStatus);
+                            count = 0;
+                        }
                         setUpdate(update);
+                        console.log(count);
                     })
                     connection.on("SendBackImage", (src) => {
                         setbackgroundMedia(address + '/' + src);
@@ -67,10 +81,10 @@ function TabloMain() {
         }
     }, [connection]);
 
+
     return (
-        <div className='tabloMain'>
+        <div className='infoCabinet'>
             <video className='backgroundVideo' poster={backgroundMedia} src={backgroundMedia} autoPlay loop muted />
-            {/* <Background /> */}
             <div className='upGridContainer'>
                 <div>
                     <img src={logo} className='logo' />
@@ -98,23 +112,27 @@ function TabloMain() {
                         )} />
                     </div>
                 </div>
-                <DateToDay connectionHub={connection} />
-                <Weather connectionHub={connection} />
             </div>
-            <div className='weekAndDutyAdminContainer'>
-                <WeekNaming connectionHub={connection} />
-                <DutyAdministrator connectionHub={connection} />
+            <div className='dateParaWeatherContainer'>
+                <div>
+                    <DateToDay connectionHub={connection} />
+                    <StatusPara className='parentWeekNamingExtension' status={update.tbNumberPara} connectionHub={connection} />
+                </div>
+                <Weather className='parentWeatherExtension' connectionHub={connection} />
             </div>
-            <Announcments connectionHub={connection} />
-            <div className='paraInformation'>
-                <StatusPara status={update.tbNumberPara} />
-                <ParaProgress progressParaWidth={update.progressBarPara} toEndParaTime={update.toEndPara} />
-            </div>
-            <div className='dayProgressContainer'>
-                <ProgressOfDay update={update} />
+            <div className='lessonsContainer'>
+                <ContainerElementsWithShadow className='futuraBookC groupRowColumn' render={() => (
+                    <Fragment>
+                            {new URLSearchParams(location.search).get('cabinet')}
+                            <div className='flexContainerCenterText' style={{ width: '1%' }}>
+                                <div className='stripeInRow' />
+                            </div>
+                            {status}
+
+                    </Fragment>
+                )} />
+                {lessonsInDay}
             </div>
         </div>
     );
 }
-
-export default TabloMain;

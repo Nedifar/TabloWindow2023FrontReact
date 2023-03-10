@@ -91,6 +91,35 @@ function getCabinetsInforamtions(list) {
     }
 };
 
+function getLessonsInforamtions(list, update, setStatus) {
+    if (list !== undefined) {
+        setStatus(list.find(p => p.number == update.paraNow)
+            ?.pp);
+            let ss = list.map((item) => {
+                return <LessonInformation key={item.number} item={item} />
+            })
+        return ss;
+    }
+    else {
+        return [];
+    }
+};
+
+export function getParasCabinetForm(location, update, prevDayWeeks, method, setStatus) {
+    if (update.grLineHeight !== undefined) {
+        let cabinet = new URLSearchParams(location.search).get('cabinet');
+        let promise = axios.get(url + '/api/lastdance/GetCabinentsWithDetail?cabinet=' + cabinet);
+        promise.then((response) => {
+            if (prevDayWeeks !== response.data) {
+                method(getLessonsInforamtions(response.data, update, setStatus));
+            }
+            console.log(response.data);
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+}
+
 function CabinetInforamtion(props) {
     return (
         <ContainerElementsWithShadow className='floorTableRow' render={() => (
@@ -114,6 +143,26 @@ function CabinetInforamtion(props) {
         )} />
     );
 };
+
+function LessonInformation(props) {
+    return (
+        <ContainerElementsWithShadow className='floorTableRow' render={() => (
+            <React.Fragment>
+                <div >{props.item.group == "" ? "-" : props.item.group}</div>
+                <div className='flexContainerCenterText' style={{ width: '1%' }}>
+                    <div className='stripeInRow' />
+                </div>
+                <div className='ss'
+                    dangerouslySetInnerHTML={{ __html: props.item.decipline?.trim() == "" ? "-" : props.item.decipline?.trim() }}>
+                </div>
+                <div className='flexContainerCenterText' style={{ width: '1%' }}>
+                    <div className='stripeInRow' />
+                </div>
+                <div >{props.item.teacherMobile?.trim()}</div>
+            </React.Fragment>
+    )} />
+    );
+}
 
 function RowColumnData(props) {
 
@@ -173,7 +222,7 @@ function getCabinet(cabinet, method) {
         let resultTest = '';
         response.data[new Date().getDay() - 1].dayWeekClasses.forEach(item => { //добавь метод на сервер когда сможешь
             let dot = ". ";
-            if (item.number === null || item.number === "null"){
+            if (item.number === null || item.number === "null") {
                 item.number = "";
                 dot = "";
             }
@@ -189,7 +238,7 @@ function getGroup(group, method) {
         let resultTest = '';
         response.data[new Date().getDay() - 1].dayWeekClasses.forEach(item => { //добавь метод на сервер когда сможешь
             let dot = ". ";
-            if (item.number === null || item.number === "null"){
+            if (item.number === null || item.number === "null") {
                 item.number = "";
                 dot = "";
             }
@@ -205,7 +254,7 @@ function getTeacher(teacher, method) {
         let resultTest = '';
         response.data[new Date().getDay() - 1].dayWeekClasses.forEach(item => { //добавь метод на сервер когда сможешь
             let dot = ". ";
-            if (item.number === null || item.number === "null"){
+            if (item.number === null || item.number === "null") {
                 item.number = "";
                 dot = "";
             }
@@ -215,11 +264,11 @@ function getTeacher(teacher, method) {
     }).catch((error) => console.log(error));
 }
 
-export function getBackgroundImage(method){
-    let promise = axios.get("http://localhost:5029" + `/tabloapi/getBackgroundMedia`);
-    promise.then((response)=>{
-        method(url +"/" +response.data);
-    }).catch((error)=>{
+export function getBackgroundImage(method) {
+    let promise = axios.get(url + `/tabloapi/getBackgroundMedia`);
+    promise.then((response) => {
+        method(url + "/" + response.data);
+    }).catch((error) => {
         console.log(error);
     })
 }
