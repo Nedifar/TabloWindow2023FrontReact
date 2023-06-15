@@ -1,0 +1,22 @@
+.parentDutyAdministrator{
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    justify-content: end;
+    margin-top: 4vh;
+
+    div:first-of-type{
+        width: 100%;
+    }
+
+    p{
+        float: right;
+    }
+
+    .dutyAdministrator{
+        font-size: 350%;
+        padding: 0px 20px 0px 20px;
+        margin: 9px 0 0 auto;
+    }
+}
+

@@ -1,0 +1,126 @@
+@import 'src/variables.scss';
+
+@media (max-height: 1050px) {
+    .infoCabinet {
+        font-size: 14px;
+    }
+}
+
+@media (max-height: 950px) {
+    .infoCabinet {
+        font-size: 13px;
+    }
+}
+
+@media (max-height: 860px) {
+    .infoCabinet {
+        font-size: 11px;
+    }
+}
+
+@media (max-height: 770px) {
+    .infoCabinet {
+        font-size: 10px;
+    }
+}
+
+@media(max-width:1285px) {
+    .infoCabinet {
+        font-size: 13px;
+    }
+}
+
+@media(max-width:1150px) {
+    .infoCabinet {
+        font-size: 12px;
+    }
+}
+
+@media(max-width:1000px) {
+    .infoCabinet {
+        font-size: 11px;
+    }
+}
+
+.lessonsContainer {
+    z-index: 1;
+    position: relative;
+    color: $mainFontColor;
+    padding-top: 2vh;
+    padding-left: $deafultSideMargin;
+    padding-right: $deafultSideMargin;
+    font-size: 200%;
+
+    &>div:first-of-type {
+        margin-bottom: 3vh;
+        justify-content: space-between;
+        padding-left: 2%;
+
+        &>div:last-of-type {
+            align-self: center;
+            flex-grow: 0.4;
+        }
+    }
+
+    .flexContainerCenterText {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        &>div {
+            cursor: pointer;
+        }
+    }
+
+    .parentStripeInRow {
+        width: 1%;
+        
+        .stripeInRow {
+            width: 10%;
+            height: 60%;
+            background-color: $mainFontColor;
+        }
+    }
+
+    &>div:nth-of-type(2){
+        .numberColumn{
+            width: 5%;
+        }
+
+        .groupColumn{
+            width: 9%;
+        }
+
+        .deciplineColumn{
+            width: 64%
+        }
+
+        .teacherColumn{
+            width: 19%;
+        }
+    }
+
+    .floorTableRow {
+        margin: 1vh 0;
+
+        .teacherCell {
+            width: 20%;
+            font-size: 110%;
+        }
+
+        .deciplineCell {
+            width: 65%
+        }
+
+        .groupCell {
+            width: 10%;
+            font-size: 130%
+        }
+
+        .numberCell{
+            width: 5%;
+            font-size: 150%;
+        }
+    }
+}

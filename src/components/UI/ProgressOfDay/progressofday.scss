@@ -1,0 +1,79 @@
+@import 'src/variables.scss';
+
+$mainColorTableElements : #fff;
+
+.tableDayProgressParent{
+    height: 21vh;
+    min-height: 155px;
+
+    table{
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 95%;
+        height: 90%;
+
+        tr{
+            height: 25%;
+    
+            td{
+                text-align-last: center;
+            }
+        }
+    
+        .smallTr{
+            height: 10%;
+        }
+    
+        .stripes{
+            .stripeContainer{
+                position: relative;
+                border-right: $mainColorTableElements solid 2px;
+                border-left: $mainColorTableElements solid 2px;
+                text-align: -webkit-center;
+
+                .pauseStripe{
+                    width: 1px;
+                    width: 2px;
+                    height: 50%;
+                    background-color: $mainColorTableElements;
+                }
+                
+                .otherStripe{
+                    display: flex;
+                    justify-content: center;
+                    position: relative;
+                    margin-right: 25%;
+                    margin-left: 25%;
+                    height: 25%;
+                    border-right: $mainColorTableElements solid 1px;
+                    border-left: $mainColorTableElements solid 1px;
+
+                    &>div{
+                        height: 200%;
+                        position: absolute;
+                        margin-top: -4%;
+                    }
+                }
+            }
+        }
+
+        .scale{
+            .allLine{
+                background: #C5C5C5;
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                border-radius: 17px;
+                border: $mainColorTableElements solid 2px;
+            
+                .ulLineDivLine {
+                    height: 100%;
+                    border-radius: 17px;
+                    right: 0;
+                    background: $mainBackgroundColor;
+                }
+            }
+        }
+    }
+    
+}

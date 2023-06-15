@@ -1,0 +1,21 @@
+.weatherParent{
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+
+    .weather{
+        font-size: 350%;
+        float: right;
+        margin: 0 0 0 auto;
+    
+        &> div{
+            display: flex;
+            align-items: center;
+            padding: 5px 24px 5px 24px;
+        }
+
+        img{
+            width: 27%;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Tablo/static/css/main.76ecaae4.css",
+    "main.js": "/Tablo/static/js/main.92ec5409.js",
+    "static/js/787.3271977a.chunk.js": "/Tablo/static/js/787.3271977a.chunk.js",
+    "static/media/Blue Version.png": "/Tablo/static/media/Blue Version.439c47b27695ff5a3675.png",
+    "static/media/futurabookc.ttf": "/Tablo/static/media/futurabookc.b98023a38b9d5f76ae41.ttf",
+    "static/media/futuramediumc.ttf": "/Tablo/static/media/futuramediumc.95c0e147b4d877810c51.ttf",
+    "static/media/futurademic.ttf": "/Tablo/static/media/futurademic.682e9ef2a50c00218076.ttf",
+    "static/media/OKEI 1.png": "/Tablo/static/media/OKEI 1.920c7a8ce3805633c7be.png",
+    "index.html": "/Tablo/index.html",
+    "main.76ecaae4.css.map": "/Tablo/static/css/main.76ecaae4.css.map",
+    "main.92ec5409.js.map": "/Tablo/static/js/main.92ec5409.js.map",
+    "787.3271977a.chunk.js.map": "/Tablo/static/js/787.3271977a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.76ecaae4.css",
+    "static/js/main.92ec5409.js"
+  ]
+}

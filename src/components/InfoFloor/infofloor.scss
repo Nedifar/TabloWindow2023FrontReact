@@ -1,0 +1,158 @@
+@import "src/variables";
+
+@media (max-height: 1050px) {
+    .infoFloor {
+        font-size: 14px;
+    }
+}
+
+@media (max-height: 950px) {
+    .infoFloor {
+        font-size: 13px;
+    }
+}
+
+@media (max-height: 860px) {
+    .infoFloor {
+        font-size: 11px;
+    }
+}
+
+@media (max-height: 770px) {
+    .infoFloor {
+        font-size: 10px;
+    }
+}
+
+@media(max-width:1285px) {
+    .infoFloor {
+        font-size: 13px;
+    }
+}
+
+@media(max-width:1150px) {
+    .infoFloor {
+        font-size: 12px;
+    }
+}
+
+@media(max-width:1000px) {
+    .infoFloor {
+        font-size: 11px;
+    }
+}
+
+.dateParaWeatherContainer {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    margin-left: $deafultSideMargin;
+    margin-right: $deafultSideMargin;
+    position: relative;
+    z-index: 1;
+    color: $mainFontColor;
+    margin-top: 1vh;
+
+    &>div{
+        display: flex;
+    }
+
+    .parentWeekNamingExtension {
+        margin: 0 2%;
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+.tableSheduleOfFlloor {
+    z-index: 1;
+    position: relative;
+    color: $mainFontColor;
+    margin-left: $deafultSideMargin;
+    margin-right: $deafultSideMargin;
+    padding-top: 3vh;
+    font-size: 200%;
+
+    .floorTableRow {
+        margin: 1vh 0;
+
+        .classHoverCabinetInfo {
+            -webkit-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+        }
+
+        .infContainer{
+            .statusInfCaninet {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        .parentStripeInRow{
+            width: 1%;
+
+            .stripeInRow {
+                width: 10%;
+                height: 60%;
+                background-color: $mainFontColor;
+            }
+        }
+    
+        &>div:nth-of-type(3){
+            width: 90%;
+            -webkit-transition: -webkit-transform .33s;
+            transition: transform .33s;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    
+            div:first-of-type>div{
+                display: flex;
+            }
+        }
+
+        .cabinetRowColumn {
+            font-size: 150%;
+        }
+        
+        .groupRowColumn {
+            font-size: 150%;
+        }
+        
+        .deciplineRowColumn {
+            font-size: 100%;
+        }
+        
+        .teacherRowColumn {
+            font-size: 100%;
+        }
+    }
+    
+    .containerElementsWithShadow{
+        .cabinetColumn {
+            width: 9%;
+        }
+        
+        .groupColumn {
+            width: 11%;
+        }
+        
+        .deciplineColumn {
+            width: 66%;
+        }
+        
+        .teacherColumn {
+            width: 22%;
+        }
+
+        .flexContainerCenterText {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        
+            &>div {
+                cursor: pointer;
+            }
+        }
+    }   
+}

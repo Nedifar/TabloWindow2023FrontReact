@@ -1,0 +1,40 @@
+@import 'src/variables.scss';
+
+.progressContainer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .toEndTimeDiv {
+        background: #C5C5C5;
+        border: 4px solid $mainFontColor;
+        border-radius: 27px;
+        height: 70%;
+        overflow: hidden;
+
+        .statusBar {
+            background: $mainBackgroundColor;
+            height: 100%;
+            margin-top: 0;
+            border-radius: 27px;
+        }
+    }
+
+    &>div {
+        flex-grow: 1;
+        margin-top: 9px;
+
+        &>div {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            padding: 0 5%;
+            font-size: 200%;
+
+            &>div {
+                flex-grow: 1;
+                margin-right: 7%;
+            }
+        }
+    }
+}
